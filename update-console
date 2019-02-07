@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Brew updates
+brew update
+brew upgrade
+brew cask upgrade
+brew cleanup -s
+
+# Brew diagnostics
+brew doctor
+brew missing
+
+# Python pip updates
+pyenv shell 2.7.15
+python -m pip install --upgrade pip
+pyenv shell 3.7.2
+python -m pip install --upgrade pip
+
+# Ruby gem updates
+rbenv shell 2.3.8
+gem update --system
+rbenv shell 2.6.1
+gem update --system
+
+# Node updates
+#nvm
+
