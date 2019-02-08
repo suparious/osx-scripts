@@ -1,4 +1,7 @@
 #!/bin/bash
+PY_VER=(2.7.15 3.7.1 3.7.2)
+RB_VER=(2.3.8 2.6.1)
+NODE_VER=(10.15.1 11.9.0)
 
 # Brew updates
 brew update
@@ -11,17 +14,22 @@ brew doctor
 brew missing
 
 # Python pip updates
-pyenv shell 2.7.15
-python -m pip install --upgrade pip
-pyenv shell 3.7.2
-python -m pip install --upgrade pip
+for python in ${PY_VER[@]}; do
+  pyenv install --skip-existing $python
+  pyenv shell $python
+  python -m pip install --upgrade pip
+done
 
 # Ruby gem updates
-rbenv shell 2.3.8
-gem update --system
-rbenv shell 2.6.1
-gem update --system
+for ruby in ${RB_VER[@]}; do
+  rbenv install --skip-existing $ruby
+  rbenv shell $ruby
+  gem update --system
+done
 
-# Node updates
-#nvm
-
+# Node package manager updates
+for node in ${NODE_VER[@]}; do
+  nvm install $node
+  nvm use $node
+  nvm install-latest-npm
+done
