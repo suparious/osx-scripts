@@ -1,14 +1,7 @@
 #!/bin/bash
-## example data
-#2019-02-11 13:02:31 lendesk-pos-dev-sp-bucket-logs
-#2019-02-11 13:02:23 lendesk-pos-dev-sp-codedeploy
-#2019-02-11 13:03:31 lendesk-pos-dev-sp-core-client-app
-#2019-02-11 13:02:36 lendesk-pos-dev-sp-core-client-app-logs
-#2019-02-11 13:04:06 lendesk-pos-dev-sp-files
-#2019-02-11 13:03:13 lendesk-pos-dev-sp-logs
-#2019-02-11 13:03:17 lendesk-pos-dev-sp-verification-id-upload
 
-TARGET_ENV="dev-sp"
+
+TARGET_ENV="dev-supa"
 
 del_s3_bucket_obj()
 {
