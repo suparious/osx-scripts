@@ -7,6 +7,8 @@
 #    - https://github.com/robbyrussell/oh-my-zsh
 # Using PowerLine fonts from:
 #    - https://github.com/powerline/fonts
+# Using Bullet-Train theme for OhMyZSH:
+#    - https://github.com/caiogondim/bullet-train.zsh
 
 ## INstalling Iterm2 (OSX) or PuTTY (windows)
 # do this yourself
@@ -27,3 +29,11 @@ cd fonts
 # clean-up a bit
 cd ..
 rm -rf fonts
+
+## Bullet-Train time
+zsh
+cd $ZSH_CUSTOM/themes/
+wget http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
+
+## Configure ~/.zshrc or use this example
+# https://raw.githubusercontent.com/suparious/osx-scripts/master/console-pimp.zshrc
