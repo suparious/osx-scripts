@@ -8,7 +8,7 @@
 # Using PowerLine fonts from:
 #    - https://github.com/powerline/fonts
 
-## INstalling Iterm2
+## INstalling Iterm2 (OSX) or PuTTY (windows)
 # do this yourself
 echo "Amazing!"
 
