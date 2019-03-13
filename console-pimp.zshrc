@@ -1,10 +1,10 @@
 # Enable colours arbitrarily
 export TERM="xterm-256color"
 
-# If you come from bash you might have to change your $PATH.
+# If executed zsh from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Put custom paths here commands here
+# Put custom paths here
 # this defaults to having personal scripts in '.bin'
 export PATH=$HOME/.bin:$PATH
  
@@ -126,6 +126,6 @@ BULLETTRAIN_RUBY_BG=magenta
 BULLETTRAIN_RUBY_FG=white
 
 # Initialize development distributions
-# Be sure you do this at the end, so as to not break any system copatability
+# Be sure you do this at the end, so as to not break any system compatability
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
