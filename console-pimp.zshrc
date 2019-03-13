@@ -1,28 +1,21 @@
-# Using pyenv
-eval "$(pyenv init -)"
-
-# Using rbenv
-eval "$(rbenv init -)"
+# Enable colours arbitrarily
+export TERM="xterm-256color"
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=/Users/shaun/source/osx-scripts:$PATH
 
+# Put custom paths here commands here
+# this defaults to having personal scripts in '.bin'
+export PATH=$HOME/.bin:$PATH
+ 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/shaun/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
+# Take the bullet
 ZSH_THEME="bullet-train"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# Set a default AWS profile
+export AWS_PROFILE=default
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -71,26 +64,15 @@ ZSH_THEME="bullet-train"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  aws
   git
-  jira
-  osx
-  vscode
-  virtualenv
-  themes
-  screen
-  iterm2
-  rails
-  ruby
-  colorize
-  pip
-  python
-  zsh-syntax-highlighting
+  pyenv
+  rbenv
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -118,6 +100,32 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Some custom overrides to the bullet-train ZSH theme
+# https://github.com/caiogondim/bullet-train.zsh/blob/master/bullet-train.zsh-theme
+#
+# control the order of the prompts
+BULLETTRAIN_PROMPT_ORDER=(
+  time
+  custom
+  aws
+  git
+  context
+  virtualenv
+  ruby
+  dir
+  cmd_exec_time
+  status
+)
+
+# Custom color overrides
+BULLETTRAIN_AWS_BG=white
+BULLETTRAIN_AWS_FG=black
+BULLETTRAIN_VIRTUALENV_BG=yellow
+BULLETTRAIN_VIRTUALENV_FG=black
+BULLETTRAIN_RUBY_BG=magenta
+BULLETTRAIN_RUBY_FG=white
+
+# Initialize development distributions
+# Be sure you do this at the end, so as to not break any system copatability
+eval "$(rbenv init -)"
+eval "$(pyenv init -)"
