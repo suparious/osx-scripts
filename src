@@ -1,2 +1,2 @@
 #!/bin/bash
-cd /Users/shaun/source/
+cd ${HOME}/source/
