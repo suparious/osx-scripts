@@ -1,2 +1,62 @@
 #!/bin/bash
-cd /Users/shaun/source/
+###
+# Suparious' shortcuts
+##
+
+REGION="ca-central-1"                        # Default region
+SRC_HOME="${HOME}/source"  		     # Where the git repos are checked-out
+ENV_DEFAULT="dev-sp3"                        # Default environment
+
+AWS_DEV="lendesk-development"                # Development AWS account
+AWS_STG="lendesk-staging"                    # Staging AWS account
+AWS_PRD="lendesk-production"                 # Production AWS account
+
+SET_ENV=$2
+SET_AWS=$1
+MYSELF=$0
+
+# Collect the desired ENV, otherwise use a default
+
+if [ -z ${SET_ENV} ]; then
+    echo "no ENV set, so using default of ${ENV_DEFAULT}..."
+    ENV=${ENV_DEFAULT}
+else
+    ENV=${SET_ENV}
+fi
+
+# Collect the desired AWS account profile, otherwise use a default
+
+case ${SET_AWS} in
+  d|dev|development)
+    PROFILE=${AWS_DEV}
+  ;;
+
+  s|stage|staging)
+    PROFILE=${AWS_STG}
+  ;;
+
+  p|prod|production)
+    PROFILE=${AWS_PRD}
+  ;;
+  *)
+    echo "Usage: $0 {<AWS_ACCOUNT>|dev|stage|prod} {<ENV>|qa5|uat2|dev-sp}"
+    echo "defaulting to ${AWS_DEV}, and configuring for ${ENV}..."
+    PROFILE=${AWS_DEV}
+  ;;
+esac
+
+if [ -d ${SRC_HOME} ]; then
+    cd ${SRC_HOME}
+
+    alias aws='aws-okta exec $PROFILE -- aws'
+    echo "'aws' CLI alias has been activated with Okta for PROFILE=${PROFILE}"
+
+    alias make='aws-okta exec $PROFILE -- make'
+    echo "'make' alias has been activated with Okta for ENV=${ENV}"
+
+    alias sceptre='aws-okta exec $PROFILE -- sceptre'
+    echo "'sceptre' alias has been activated with Okta for PROFILE=${PROFILE}"
+else
+    echo "Could not find ${SRC_HOME}... please check 'SRC_HOME' variable in ${MYSELF}, and try again"
+fi
+
