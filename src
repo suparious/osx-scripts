@@ -1,4 +1,5 @@
 #!/bin/bash
+<<<<<<< HEAD
 ###
 # Suparious' shortcuts
 ##
@@ -60,3 +61,6 @@ else
     echo "Could not find ${SRC_HOME}... please check 'SRC_HOME' variable in ${MYSELF}, and try again"
 fi
 
+=======
+cd ${HOME}/source/
+>>>>>>> 87c7354c38be13fbb45dccbb58fa6b8452c9e6b9
