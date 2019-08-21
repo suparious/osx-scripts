@@ -60,5 +60,4 @@ else
     echo "Could not find ${SRC_HOME}... please check 'SRC_HOME' variable in ${MYSELF}, and try again"
 fi
 
-=======
 cd ${HOME}/source/
