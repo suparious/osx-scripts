@@ -1,16 +1,15 @@
 #!/bin/bash
-<<<<<<< HEAD
 ###
 # Suparious' shortcuts
 ##
 
 REGION="ca-central-1"                        # Default region
 SRC_HOME="${HOME}/source"  		     # Where the git repos are checked-out
-ENV_DEFAULT="dev-sp3"                        # Default environment
+ENV_DEFAULT="dev"                            # Default environment
 
-AWS_DEV="lendesk-development"                # Development AWS account
-AWS_STG="lendesk-staging"                    # Staging AWS account
-AWS_PRD="lendesk-production"                 # Production AWS account
+AWS_DEV="development"                # Development AWS account
+AWS_STG="staging"                    # Staging AWS account
+AWS_PRD="production"                 # Production AWS account
 
 SET_ENV=$2
 SET_AWS=$1
@@ -49,18 +48,17 @@ esac
 if [ -d ${SRC_HOME} ]; then
     cd ${SRC_HOME}
 
-    alias aws='aws-okta exec $PROFILE -- aws'
-    echo "'aws' CLI alias has been activated with Okta for PROFILE=${PROFILE}"
+    #alias aws='aws-okta exec $PROFILE -- aws'
+    #echo "'aws' CLI alias has been activated with Okta for PROFILE=${PROFILE}"
 
-    alias make='aws-okta exec $PROFILE -- make'
-    echo "'make' alias has been activated with Okta for ENV=${ENV}"
+    #alias make='aws-okta exec $PROFILE -- make'
+    #echo "'make' alias has been activated with Okta for ENV=${ENV}"
 
-    alias sceptre='aws-okta exec $PROFILE -- sceptre'
-    echo "'sceptre' alias has been activated with Okta for PROFILE=${PROFILE}"
+    #alias sceptre='aws-okta exec $PROFILE -- sceptre'
+    #echo "'sceptre' alias has been activated with Okta for PROFILE=${PROFILE}"
 else
     echo "Could not find ${SRC_HOME}... please check 'SRC_HOME' variable in ${MYSELF}, and try again"
 fi
 
 =======
 cd ${HOME}/source/
->>>>>>> 87c7354c38be13fbb45dccbb58fa6b8452c9e6b9
