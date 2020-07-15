@@ -1,0 +1,47 @@
+#!/bin/bash
+
+WORKSPACE=$1
+ADMIN=$2
+SRC_DIR=$HOME/source
+
+REPOS=$(ls -1 $SRC_DIR/$WORKSPACE)
+
+echo "Configured for: $SRC_DIR/$WORKSPACE"
+
+cd "$SRC_DIR/$WORKSPACE"
+
+case "$WORKSPACE" in
+
+    LSCO|lsco)
+        for dir in ./*; do
+            if [ "$ADMIN" == "wipe" ]; then
+                echo "Wipe requested for: $dir"
+                rm -rf "$dir" && \
+                echo "Re-cloning: $dir..."
+                git clone "git@github.levi-site.com:LSCO/${dir##*/}.git"
+            else
+                echo "Updating: $dir"
+                cd "$dir" && \
+                git checkout master && git pull
+                cd "$SRC_DIR/$WORKSPACE"
+            fi
+        done
+        ;;
+
+    *)
+        for dir in ./*; do
+            if [ "$ADMIN" == "wipe" ]; then
+                echo "Wipe requested for: $dir"
+                rm -rf "$dir" && \
+                echo "Re-cloning: $dir..."
+                git clone "git@github.com:$WORKSPACE/${dir##*/}.git"
+            else
+                echo "Updating: $dir"
+                cd "$dir" && \
+                git checkout master && git pull
+                cd "$SRC_DIR/$WORKSPACE"
+            fi
+        done
+        ;;
+esac
+

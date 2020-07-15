@@ -1,0 +1,17 @@
+#!/bin/bash
+
+RS_USER=$1
+RS_HOST=$2
+DATABASE=$3
+
+echo "Connecting to $DATABASE on $RS_HOST with $RS_USER..."
+
+if [ -z "$RS_USER" ]; then
+  RS_USER=lameuser
+  DATABASE=lamedata
+  PGPASSWORD=lamepass psql -h $RS_HOST -U $RS_USER -d $DATABASE -p 5439
+else
+  psql -h $RS_HOST -U $RS_USER -d $DATABASE -p 5439
+fi
+
+
